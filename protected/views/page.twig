@@ -1,0 +1,75 @@
+{% extends 'layout.twig' %}
+{% block title %}Page {{ page.title }} {{ parent() }}{% endblock %}
+{% block content %}
+<div class="container">
+	<div class="content">
+		{% include '_top.twig' %}
+			<div class="row">
+				<div class="span10-last page">
+					<a href="/" id="page-link">
+						{% if page.versions %}
+							{% for version in page.versions %}
+								<img src="/media/{{ page.name }}/{{ version.name }}"/>
+							{% endfor %}
+						{% endif %}
+					</a>
+					<p>{{ page.title }}</p>
+					<div class="slider-box">
+						<div id="slider"></div>
+					</div>
+				</div>
+			</div>
+		{% include '_bottom.twig' %}
+	</div>
+</div>
+{% if page.versions|length > 1 %}
+    <script type="text/javascript">
+
+    var page = {
+    	currentFrame : 0,
+    	width : $('#page-link').width(),
+    	frameCount: {{page.versions|length}},
+    	changeFrame: function(frame) {
+    		if (this.currentFrame != frame && frame < this.frameCount && frame >= 0) {
+				this.currentFrame = frame;
+				$('#page-link img:visible').hide();
+				$('#page-link img:eq('+this.currentFrame+')').show();
+			}
+    	}
+    };
+
+    $(function() {
+    	$( "#slider" ).slider({
+    		value:0,
+    		min: 0,
+    		max: page.frameCount - 1,
+    		step: 1,
+    		animate: true,
+
+    		stop: function( event, ui ) {
+				page.changeFrame(ui.value);
+    		},
+    		slide: function( event, ui ) {
+    			page.changeFrame(ui.value);
+    		}
+    	});
+
+    	$('#page-link').mousemove(function(e) {
+    		var frame = Math.floor(e.offsetX/page.width * page.frameCount);
+    		if (page.currentFrame != frame && frame < page.frameCount && frame >= 0) {
+    			$( "#slider" ).slider("value", frame);
+    			page.changeFrame(frame);
+    		}
+    		e.preventDefault();
+    		e.stopPropagation();
+    	});
+    	$('#page-link').mouseleave(function(e) {
+    		console.log('mouseleave');
+    		$( "#slider" ).slider("value", 0);
+    		page.changeFrame(0);
+    	});
+    });
+    </script>
+{% endif %}
+
+{% endblock %}

@@ -1,0 +1,27 @@
+{% extends 'layout.twig' %}
+{% block content %}
+<div class="container">
+	<div class="content">
+		{% include '_top.twig' %}
+		{% for row in rows %}
+			{% if row %}
+				<div class="row">
+					{% for page in row %}
+						<div class="span2 preview">
+							<a href="/page/{{ page.title }}">
+								{% if page.versions %}
+									{% for version in page.versions %}
+										<img src="/images/thumb-1.jpg">
+									{% endfor %}
+								{% endif %}
+							</a>
+							<p>{{ page.title }}</p>
+						</div>
+					{% endfor %}
+				</div>
+			{% endif %}
+		{% endfor %}
+		{% include '_bottom.twig' %}
+	</div>
+</div>
+{% endblock %}

@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>{% block title %}Making Yoga and Life{% endblock %}</title>
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <!--[if lt IE 9]>
+      <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+
+	<link type="text/css" href="/styles/ui-lightness/jquery-ui-1.8.16.custom.css" rel="stylesheet" />
+    <link href="/styles/bootstrap.css" rel="stylesheet">
+	<link href="/styles/main.css" rel="stylesheet">
+
+	<link href='http://fonts.googleapis.com/css?family=Nova+Mono' rel='stylesheet' type='text/css'>
+	<link href='http://fonts.googleapis.com/css?family=Prata' rel='stylesheet' type='text/css'>
+
+    <link rel="shortcut icon" href="/images/favicon.ico">
+    <link rel="apple-touch-icon" href="/images/apple-touch-icon.png">
+    <link rel="apple-touch-icon" sizes="72x72" href="/images/apple-touch-icon-72x72.png">
+    <link rel="apple-touch-icon" sizes="114x114" href="/images/apple-touch-icon-114x114.png">
+
+	<script type="text/javascript" src="/js/jquery-1.7.1.js"></script>
+	<script type="text/javascript" src="/js/jquery-ui-1.8.16.custom.min.js"></script>
+  </head>
+
+  <body>
+    {% block content %}
+	{% endblock %}
+  </body>
+</html>
