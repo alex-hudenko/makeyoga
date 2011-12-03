@@ -1,6 +1,7 @@
 <?php
 
 require_once '../config.php';
+require_once '../include.php';
 
 $directory = dirname(__FILE__) . "/../../media";
 $directoryIterator = new DirectoryIterator($directory);

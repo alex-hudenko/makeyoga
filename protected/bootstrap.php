@@ -1,6 +1,7 @@
 <?php
 require_once __DIR__.'/lib/silex.phar';
 require_once __DIR__.'/config.php';
+require_once __DIR__.'/include.php';
 
 $app = new Silex\Application();
 $app['debug'] = APP_DEBUG;
