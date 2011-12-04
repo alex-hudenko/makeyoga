@@ -42,9 +42,9 @@ class Page extends Model {
 
 	static private function _getHomePageData($pageName = null) {
 		if ($pageName) {
-		    $pages = DbConnection::getInstance()->select('SELECT p.id page_id, p.name page_name, pv.id page_version_id, pv.name page_version_name FROM ?_'.self::$table.' p LEFT JOIN ?_'.PageVersion::$table.' pv ON pv.page_id = p.id WHERE p.name = ? ORDER BY p.name, pv.name DESC', $pageName);
+		    $pages = DbConnection::getInstance()->select('SELECT p.id page_id, p.name page_name, pv.id page_version_id, pv.name page_version_name FROM ?_'.self::$table.' p LEFT JOIN ?_'.PageVersion::$table.' pv ON pv.page_id = p.id WHERE p.name = ? ORDER BY p.name, pv.name', $pageName);
 		} else {
-			$pages = DbConnection::getInstance()->select('SELECT p.id page_id, p.name page_name, pv.id page_version_id, pv.name page_version_name FROM ?_'.self::$table.' p LEFT JOIN ?_'.PageVersion::$table.' pv ON pv.page_id = p.id ORDER BY p.name, pv.name DESC');
+			$pages = DbConnection::getInstance()->select('SELECT p.id page_id, p.name page_name, pv.id page_version_id, pv.name page_version_name FROM ?_'.self::$table.' p LEFT JOIN ?_'.PageVersion::$table.' pv ON pv.page_id = p.id ORDER BY p.name, pv.name');
 		}
 		$itemsPerRow = 6;
 		$rows = array();

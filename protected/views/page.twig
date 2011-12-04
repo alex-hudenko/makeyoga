@@ -29,7 +29,9 @@
     	currentFrame : 0,
     	width : $('#page-link').width(),
     	frameCount: {{page.versions|length}},
-    	changeFrame: function(frame) {
+    	changeFrame: function(frameNumber) {
+//    		var frame = this.frameCount - frameNumber;
+			var frame = frameNumber;
     		if (this.currentFrame != frame && frame < this.frameCount && frame >= 0) {
 				this.currentFrame = frame;
 				$('#page-link img:visible').hide();
@@ -39,8 +41,10 @@
     };
 
     $(function() {
+    	$('#page-link img').hide();
+    	$('#page-link img:last-child').show();
     	$( "#slider" ).slider({
-    		value:0,
+    		value:page.frameCount - 1,
     		min: 0,
     		max: page.frameCount - 1,
     		step: 1,
@@ -63,10 +67,11 @@
     		e.preventDefault();
     		e.stopPropagation();
     	});
+
     	$('#page-link').mouseleave(function(e) {
     		console.log('mouseleave');
-    		$( "#slider" ).slider("value", 0);
-    		page.changeFrame(0);
+    		$( "#slider" ).slider("value", page.frameCount - 1);
+    		page.changeFrame(page.frameCount - 1);
     	});
     });
     </script>

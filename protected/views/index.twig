@@ -11,7 +11,7 @@
 							<a href="/page/{{ page.title }}">
 								{% if page.versions %}
 									{% for version in page.versions %}
-										<img src="/images/thumb-1.jpg">
+										<img src="/media/thumbnails/{{page.name}}/{{version.name}}">
 									{% endfor %}
 								{% endif %}
 							</a>

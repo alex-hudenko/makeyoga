@@ -1,4 +1,5 @@
 <?php
+require_once 'lib/common.php';
 require_once 'lib/vendor/DbSimple/Generic.php';
 require_once 'lib/vendor/DbSimple/Mysql.php';
 require_once 'lib/helpers/DirectoryParser.php';

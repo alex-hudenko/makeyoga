@@ -29,6 +29,13 @@ foreach ($directoryIterator as $directoryInfo) {
 					$pageVersion->name = $fileInfo->getFilename();
 					$pageVersion->page_id = $page->id;
 					$pageVersion->save();
+
+					$image = new Imagick($fileInfo->getPathName());
+					$image->thumbnailImage(170,109);
+					if (!is_dir($directory . '/thumbnails/' . $page->name)) {
+					    mkdir($directory . '/thumbnails/' . $page->name);
+					}
+					$image->writeImage($directory . '/thumbnails/' . $page->name . '/' . $fileInfo->getFilename());
 				}
 				echo $fileInfo->getFilename() . "\n";
 			}
